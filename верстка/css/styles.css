@@ -1,0 +1,85 @@
+body, html {
+	padding: 0;
+	margin: 25px;
+	font-family: 'AvantGardeCTT', arial;
+	font-size: 1.1em;
+	background: #eeece9;
+}
+/* header */
+header{
+    padding: 0;
+    margin: 0 auto;
+    width:1024px;
+	height: 80px;
+}
+
+#header, #menu-container, #content {
+	background: #fff;
+	box-shadow: 0 0 20px rgba(0,0,0,0.5); 
+}
+#top-container {
+	padding: 0;
+    margin: 0 auto;
+    background: #eeece9;
+    width:1550px;
+}
+#menu-container {
+	float: right;
+	width: 30%;
+	height: 700px;
+	padding: 20px;
+}
+#form-container {
+	width: 420px;
+	margin: 10px auto;
+	padding: 20px;
+	border: 1px solid black;
+}
+#repos-container {
+	width: 420px;
+	margin: 10px auto;
+	padding: 0px 20px;
+	border: 1px solid black;
+}
+#content-container{
+	width: 67%;
+	margin-right: 33%;
+	padding: 10px;
+}
+#content {
+	width: 900px;
+	margin: 0 auto;
+	padding: 10px;
+	height: 700px;
+}
+.commit-container {
+	width: 700px;
+	height: 50px;
+	margin: 10px auto;
+	background: #eeece9;
+}
+.commit-image, .commit-message, .commit-remove-button {
+	/*display:inline-block;*/
+	float: left;
+	padding: 2px;
+}
+.commit-image {
+	width:50px;
+}
+.commit-message {
+	margin-left: 20px;
+	width: 70%;
+}
+p.message, p.author {
+	margin: 0px;
+	padding: 0px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+p.message { 
+	height: 25px; 
+}
+p.author { 
+	height: 18px;
+	font-size: 0.8em;
+}

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Git Viewer</title>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="stylesheet" href="/css/styles.css"/>
+		<link rel="stylesheet" href="/css/simplePagination.css"/>
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js"></script>
+		<script src="/js/jquery.simplePagination.js"></script>
+		<script src="/js/imgLiquid-min.js"></script>
+		<script src="/js/gitviewer.js"></script>
+	</head>
+	<body>
+		<header>
+			
+		</header>
+		
+		<div id="top-container">
+			
+			<div id="menu-container">
+				<h5>Welcome, {{@githubName}}</h5>
+				
+				<div id="form-container">
+					<form method="post" action="/search">
+						<input type="text" pattern="^[\w-]+$" name="owner" placeholder="owner">
+						<input type="text" pattern="^[\w-]+$" name="repo" placeholder="repo">
+						<button type="submit">Show Commits</button>
+					</form>
+				</div>
+				
+				<div id="repos-container">
+					<h3>Last uploaded repos:</h3>
+					<repeat group="{{@lastRepos}}" value="{{@repo}}">
+						<p><a href="/{{@repo.owner}}/{{@repo.name}}">{{@repo.owner}} \ {{@repo.name}}</a></p>
+					</repeat>
+				</div>
+			</div>
+			
+			<div id="content-container">
+				<div id="content">
+					
+					<div id="controls-container">
+						<button id="removeCommits">Remove Selected</button>
+						<button id="reloadRepo">Reload From Git</button>
+					</div>
+					
+					<repeat group="{{@commits}}" value="{{@commit}}">
+						<div class="commit-container">
+							<div class="commit-remove-button">
+								<input type="checkbox" class='checkbox' data-commit-id="{{@commit->id}}">
+							</div>
+
+							<div class="commit-image imgLiquid">
+								<a href="{{@commit->author->html_url}}" target="_blank">
+									<img src="{{@commit->author->avatar_url}}&s=36" title="{{@commit->author->login}}"/>
+								</a>
+							</div>
+
+							<div class="commit-message">
+								<a href="{{@commit->html_url}}" target="_blank">
+									<p class="message">{{@commit->commit->message}}</p>
+								</a>
+								<p class="author">{{@commit->commit->author->name}} ({{@commit->date}})</p>
+							</div>
+						</div>
+					</repeat>
+					
+					<div id="pager-container" data-pagecount="{{@pageCount}}" data-currentpage="{{@curPage}}"></div>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>
